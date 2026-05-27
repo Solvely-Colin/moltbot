@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "ios-pro-proof-local",
+  "title": "Local iOS Pro Proof",
+  "scenario": "ios-pro-proof-local",
+  "summary": "Local Mantis-style simulator proof captured connected iOS pro tabs, fresh session creation, chat hello/reply, and realtime talk start/stop.",
+  "comparison": {
+    "candidate": {
+      "ref": "s/ios-pro-ui-refresh-latest",
+      "expected": "iOS app connects to gateway and exercises pro tabs, chat, new session, and realtime talk",
+      "status": "pass"
+    },
+    "pass": true
+  },
+  "observations": [
+    "Started recording after Settings showed Connection, Connected with address 127.0.0.1:18789 and Agents 5.",
+    "Visited Settings, Command, Agents, and Chat tabs in the recording.",
+    "Created a fresh chat session with /new before sending hello.",
+    "Chat message hello received visible assistant reply: Hey Colin! What's up?",
+    "Realtime talk button changed from Start realtime chat to Stop realtime chat and logs show session.ready plus session.closed."
+  ],
+  "artifacts": [
+    {
+      "kind": "motionClip",
+      "lane": "candidate",
+      "label": "Full simulator MP4",
+      "path": "ios-pro-proof.mp4",
+      "targetPath": "ios-pro-proof.mp4"
+    },
+    {
+      "kind": "motionClip",
+      "lane": "candidate",
+      "label": "Compressed share MP4",
+      "path": "ios-pro-proof-share.mp4",
+      "targetPath": "ios-pro-proof-share.mp4"
+    },
+    {
+      "kind": "motionPreview",
+      "lane": "candidate",
+      "label": "GIF preview",
+      "path": "ios-pro-proof.gif",
+      "targetPath": "ios-pro-proof.gif",
+      "inline": true,
+      "width": 260
+    },
+    {
+      "kind": "desktopScreenshot",
+      "lane": "candidate",
+      "label": "Connected start frame",
+      "path": "ios-pro-proof-start.png",
+      "targetPath": "ios-pro-proof-start.png",
+      "inline": true,
+      "width": 360
+    },
+    {
+      "kind": "report",
+      "lane": "run",
+      "label": "Local proof report",
+      "path": "report.md",
+      "targetPath": "report.md"
+    },
+    {
+      "kind": "metadata",
+      "lane": "run",
+      "label": "Clean gateway proof log",
+      "path": "clean-proof-log.txt",
+      "targetPath": "clean-proof-log.txt"
+    }
+  ]
+}
