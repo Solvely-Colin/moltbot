@@ -1,0 +1,148 @@
+{
+  "nodes": {
+    "ts": 1781579269761,
+    "nodes": [
+      {
+        "nodeId": "<id-1>",
+        "displayName": "sdk_gphone64_arm64",
+        "platform": "android",
+        "version": "2026.6.2-dev",
+        "clientId": "<id-2>",
+        "clientMode": "node",
+        "deviceFamily": "Android",
+        "modelIdentifier": "Google sdk_gphone64_arm64",
+        "caps": [
+          "calendar",
+          "camera",
+          "canvas",
+          "contacts",
+          "device",
+          "motion",
+          "notifications",
+          "system",
+          "talk"
+        ],
+        "commands": [
+          "calendar.events",
+          "camera.list",
+          "canvas.a2ui.push",
+          "canvas.a2ui.pushJSONL",
+          "canvas.a2ui.reset",
+          "canvas.eval",
+          "canvas.hide",
+          "canvas.navigate",
+          "canvas.present",
+          "canvas.snapshot",
+          "contacts.search",
+          "device.health",
+          "device.info",
+          "device.permissions",
+          "device.status",
+          "motion.activity",
+          "notifications.actions",
+          "notifications.list",
+          "system.notify",
+          "talk.ptt.cancel",
+          "talk.ptt.once",
+          "talk.ptt.start",
+          "talk.ptt.stop"
+        ],
+        "approvalState": "approved",
+        "connectedAtMs": 1781579236801,
+        "lastSeenAtMs": 1781579236944,
+        "lastSeenReason": "connect",
+        "approvedAtMs": 1781579236793,
+        "paired": true,
+        "connected": true
+      }
+    ]
+  },
+  "nodePairing": {
+    "pending": [],
+    "paired": [
+      {
+        "nodeId": "<id-1>",
+        "token": "<redacted>",
+        "displayName": "sdk_gphone64_arm64",
+        "platform": "android",
+        "version": "2026.6.2-dev",
+        "deviceFamily": "Android",
+        "modelIdentifier": "Google sdk_gphone64_arm64",
+        "caps": [
+          "canvas",
+          "device",
+          "notifications",
+          "system",
+          "camera",
+          "talk",
+          "contacts",
+          "calendar",
+          "motion"
+        ],
+        "commands": [
+          "canvas.present",
+          "canvas.hide",
+          "canvas.navigate",
+          "canvas.eval",
+          "canvas.snapshot",
+          "canvas.a2ui.push",
+          "canvas.a2ui.pushJSONL",
+          "canvas.a2ui.reset",
+          "system.notify",
+          "talk.ptt.start",
+          "talk.ptt.stop",
+          "talk.ptt.cancel",
+          "talk.ptt.once",
+          "camera.list",
+          "device.status",
+          "device.info",
+          "device.permissions",
+          "device.health",
+          "notifications.list",
+          "notifications.actions",
+          "contacts.search",
+          "calendar.events",
+          "motion.activity"
+        ],
+        "createdAtMs": 1781579236793,
+        "approvedAtMs": 1781579236793,
+        "lastConnectedAtMs": 1781579236801,
+        "lastSeenAtMs": 1781579236918,
+        "lastSeenReason": "connect"
+      }
+    ]
+  },
+  "devicePairing": {
+    "pending": [],
+    "paired": [
+      {
+        "deviceId": "<id-1>",
+        "publicKey": "<redacted>",
+        "displayName": "sdk_gphone64_arm64",
+        "platform": "android",
+        "deviceFamily": "Android",
+        "clientId": "<id-2>",
+        "clientMode": "node",
+        "role": "node",
+        "roles": [
+          "node",
+          "operator"
+        ],
+        "scopes": [
+          "operator.approvals",
+          "operator.read",
+          "operator.talk.secrets",
+          "operator.write"
+        ],
+        "createdAtMs": 1781579236768,
+        "approvedAtMs": 1781579236768,
+        "lastSeenAtMs": 1781579236944,
+        "lastSeenReason": "connect",
+        "tokens": "<redacted>"
+      }
+    ]
+  },
+  "systemRun": {
+    "error": "unknown method: system.run"
+  }
+}

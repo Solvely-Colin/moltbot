@@ -1,0 +1,31 @@
+{
+  "androidNode": {
+    "displayName": "sdk_gphone64_arm64",
+    "platform": "android",
+    "paired": true,
+    "connected": true,
+    "approvalState": "approved",
+    "hasPendingRequestId": false
+  },
+  "nodePairing": {
+    "pendingCount": 0,
+    "pairedCount": 1
+  },
+  "devicePairing": {
+    "pendingCount": 0,
+    "pairedCount": 1
+  },
+  "boundedOperator": {
+    "scopes": [
+      "operator.approvals",
+      "operator.read",
+      "operator.talk.secrets",
+      "operator.write"
+    ],
+    "hasOperatorPairing": false,
+    "hasOperatorAdmin": false
+  },
+  "adminProbe": {
+    "error": "unknown method: system.run"
+  }
+}

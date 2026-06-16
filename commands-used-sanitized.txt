@@ -1,0 +1,16 @@
+# Sanitized final-SHA proof commands. Setup codes, tokens, local session ids, and local hostnames omitted.
+git status -sb && git rev-parse HEAD && git rev-parse origin/main && git rev-list --left-right --count HEAD...origin/main
+OPENCLAW_GATEWAY_TOKEN=<redacted> OPENCLAW_STATE_DIR=<artifact>/state OPENCLAW_CONFIG_PATH=<artifact>/openclaw.json HOME=<artifact>/home node scripts/run-node.mjs gateway run --port 19091 --bind loopback --auth token --ws-log compact
+OPENCLAW_GATEWAY_TOKEN=<redacted> OPENCLAW_STATE_DIR=<artifact>/state OPENCLAW_CONFIG_PATH=<artifact>/openclaw.json HOME=<artifact>/home node scripts/run-node.mjs qr --setup-code-only --url ws://127.0.0.1:19091 > <artifact>/setup-code-loopback.txt
+JAVA_HOME=<Android Studio JBR> avdmanager create avd -n OpenClaw_FinalProof_API_36 -k system-images;android-36;google_apis_playstore;arm64-v8a -d pixel_8
+emulator -avd OpenClaw_FinalProof_API_36 -no-window -no-audio -no-snapshot -no-snapshot-save -no-boot-anim -gpu swiftshader_indirect -netdelay none -netspeed full
+adb -s emulator-5554 reverse tcp:19091 tcp:19091
+adb -s emulator-5554 install -r apps/android/app/build/outputs/apk/play/debug/openclaw-2026.6.2-play-debug.apk
+adb -s emulator-5554 shell pm clear ai.openclaw.app
+adb -s emulator-5554 shell am start -n ai.openclaw.app/.MainActivity
+adb -s emulator-5554 shell input tap <bounds-derived controls>
+adb -s emulator-5554 shell input text <redacted setup code read from artifact file by local script>
+adb -s emulator-5554 exec-out screencap -p > <artifact>/screen-*.png
+adb -s emulator-5554 exec-out uiautomator dump /dev/tty > <artifact>/ui-*.xml
+node --import tsx/esm <sanitized gateway-state collector using callGateway node.list/node.pair.list/device.pair.list>
+ffmpeg -framerate 1 -i <artifact>/gif-frames/frame-%02d.png -vf scale=360:-1:flags=lanczos,fps=1 <artifact>/setup-code-final-proof-redacted.gif
