@@ -347,15 +347,17 @@ private fun OverviewScreen(
   val statusText by viewModel.statusText.collectAsState()
   val models by viewModel.modelCatalog.collectAsState()
   val providers by viewModel.modelAuthProviders.collectAsState()
+  val execApprovals by viewModel.execApprovals.collectAsState()
   val pendingToolCalls by viewModel.chatPendingToolCalls.collectAsState()
   val cronStatus by viewModel.cronStatus.collectAsState()
   val nodesDevicesSummary by viewModel.nodesDevicesSummary.collectAsState()
   val channelsSummary by viewModel.channelsSummary.collectAsState()
   val readyProviderCount = providerRows(providers = providers, models = models).count { it.ready }
+  val pendingApprovalsCount = execApprovals.size + pendingToolCalls.size
   val attentionRows =
     homeAttentionRows(
       isConnected = isConnected,
-      pendingApprovals = pendingToolCalls.size,
+      pendingApprovals = pendingApprovalsCount,
       channelsSummary = channelsSummary,
       nodesDevicesSummary = nodesDevicesSummary,
       readyProviderCount = readyProviderCount,
@@ -368,6 +370,7 @@ private fun OverviewScreen(
       viewModel.refreshCronJobs()
       viewModel.refreshNodesDevices()
       viewModel.refreshChannels()
+      viewModel.refreshExecApprovals()
     }
   }
 
@@ -476,7 +479,7 @@ private fun OverviewScreen(
                 ),
                 ModuleRow("Channels", "Connected messengers", channelsSummaryText(channelsSummary), Icons.Default.Notifications, Tab.Settings, SettingsRoute.Channels),
                 ModuleRow("Nodes & Devices", "Phone and node health", nodesDevicesSummaryText(nodesDevicesSummary), Icons.Default.Cloud, Tab.Settings, SettingsRoute.NodesDevices),
-                ModuleRow("Approvals", "Tool decisions", approvalsSummary(pendingToolCalls.size), Icons.Default.Lock, Tab.Settings, SettingsRoute.Approvals),
+                ModuleRow("Approvals", "Tool decisions", approvalsSummary(pendingApprovalsCount), Icons.Default.Lock, Tab.Settings, SettingsRoute.Approvals),
                 ModuleRow("Settings", "More runtime controls", null, Icons.Outlined.Settings, Tab.Settings, SettingsRoute.Home),
               ),
             onSelectTab = onSelectTab,
@@ -847,6 +850,7 @@ private fun SettingsShellScreen(
   val notificationForwardingEnabled by viewModel.notificationForwardingEnabled.collectAsState()
   val speakerEnabled by viewModel.speakerEnabled.collectAsState()
   val agents by viewModel.gatewayAgents.collectAsState()
+  val execApprovals by viewModel.execApprovals.collectAsState()
   val pendingToolCalls by viewModel.chatPendingToolCalls.collectAsState()
   val cronStatus by viewModel.cronStatus.collectAsState()
   val usageSummary by viewModel.usageSummary.collectAsState()
@@ -855,6 +859,7 @@ private fun SettingsShellScreen(
   val channelsSummary by viewModel.channelsSummary.collectAsState()
   val dreamingSummary by viewModel.dreamingSummary.collectAsState()
   val appearanceThemeMode by viewModel.appearanceThemeMode.collectAsState()
+  val pendingApprovalsCount = execApprovals.size + pendingToolCalls.size
 
   LaunchedEffect(isConnected) {
     if (isConnected) {
@@ -865,6 +870,7 @@ private fun SettingsShellScreen(
       viewModel.refreshNodesDevices()
       viewModel.refreshChannels()
       viewModel.refreshDreaming()
+      viewModel.refreshExecApprovals()
     }
   }
 
@@ -904,7 +910,7 @@ private fun SettingsShellScreen(
           SettingsRow("Nodes & Devices", nodesDevicesSummaryText(nodesDevicesSummary), Icons.Default.Cloud, status = nodesDevicesStatus(nodesDevicesSummary), route = SettingsRoute.NodesDevices),
           SettingsRow("Channels", channelsSummaryText(channelsSummary), Icons.Default.Notifications, status = channelsStatus(channelsSummary), route = SettingsRoute.Channels),
           SettingsRow("Agents", if (agents.isEmpty()) "Load from gateway" else "${agents.size} available", Icons.Default.Person, status = agents.isNotEmpty(), route = SettingsRoute.Agents),
-          SettingsRow("Approvals", approvalsSummary(pendingToolCalls.size), Icons.Default.Lock, status = approvalsStatus(pendingToolCalls.size), route = SettingsRoute.Approvals),
+          SettingsRow("Approvals", approvalsSummary(pendingApprovalsCount), Icons.Default.Lock, status = approvalsStatus(pendingApprovalsCount), route = SettingsRoute.Approvals),
           SettingsRow("Cron Jobs", cronJobsSummary(cronStatus.jobs), Icons.Outlined.AccessTime, status = if (cronStatus.jobs > 0) cronStatus.enabled else null, route = SettingsRoute.CronJobs),
           SettingsRow("Usage", usageSummaryText(usageSummary.providers.size), Icons.Default.Storage, status = if (usageSummary.providers.isNotEmpty()) true else null, route = SettingsRoute.Usage),
           SettingsRow("Skills", skillsSummaryText(skillsSummary.skills), Icons.Default.Settings, status = skillsStatus(skillsSummary.skills), route = SettingsRoute.Skills),
