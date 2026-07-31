@@ -1,12 +1,13 @@
 {
-  "candidateSha": "2db2c2a423163026f76b599f0f6b45e51bd81da7",
+  "candidateSha": "7bfe11f1acc7ad9c200cad100dfffc4d860267df",
+  "baseSha": "29a92e98acce194e6a7f6692e45097db6ee04060",
   "gateway": "real isolated OpenClaw gateway",
   "provider": "synthetic configured model; no provider request sent",
   "viewport": {
     "width": 320,
     "height": 568
   },
-  "url": "http://127.0.0.1:18797/new",
+  "url": "http://127.0.0.1:18798/new",
   "footerBox": {
     "x": 29,
     "y": 357.96875,
@@ -26,7 +27,5 @@
     "height": 40
   },
   "separated": true,
-  "withinFooter": true,
-  "incognitoText": "\n      \n    \n       \n    \n    \n  Incognito\n    ",
-  "modelText": "\n    \n      \n        Proof Model · Off\n        \n          \n    \n       \n    \n  \n        \n      \n      \n        \n              \n    \n      \n        Model\n      \n      \n        \n              \n                Using default from Settings\n              \n            \n      \n    \n  \n              \n                \n                  \n                    Provider\n                  \n                  \n                        \n                          \n    \n      P\n    \n  \n                          Proof\n                        \n                      \n                \n                \n                  \n                      \n                        \n      \n        \n          \n            \n              Model\n              Current\n            \n            128k context\n          \n          \n                \n                  \n    \n      \n    \n  \n                \n              \n        \n      \n    \n                      \n                    \n                \n              \n            \n        \n      \n    \n  "
+  "withinFooter": true
 }
